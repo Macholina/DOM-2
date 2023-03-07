@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM MANIPULATION</title>
+</head>
+
+<body>
+    <button class="modal">Where is our modal</button>
+    <br>
+    <div class="modal-container">
+        <div class="overall">
+            right here
+            <button class="cancel">X</button>
+        </div>
+    </div>
+    <style>
+        body {
+            background: url(Penguins.jpg) no-repeat center center/cover;
+            height: 95vh;
+            position: relative;
+
+        }
+
+        .modal {
+            padding: 20px;
+            width: 350px;
+            border-radius: 15px;
+            position: relative;
+            top: 700px;
+            border: solid #fff;
+            font-size: 2rem;
+            text-transform: lowercase;
+            color: white;
+            background-color: transparent;
+        }
+
+        
+
+        .overall {
+            position: absolute;
+            display: flex;
+            background-color: #fff;
+            width: 150px;
+            height: 30px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            justify-content: space-between;
+            font-family: cursive;
+            text-align: center;
+            padding: 10px;
+            justify-content: center;
+            transform: translate(300%, 300%);
+            transition: 1s;
+            animation-name: animatemodal;
+            animation-duration: 1s;
+            display: none;
+            z-index: 1;
+
+        }
+
+        .cancel {
+            margin-left: 2px;
+            color: red;
+            border: none;
+            background-color: #fff;
+            margin-top: 1px;
+            font-size: 1rem;
+            height: 10px;
+        }
+
+        @keyframes animatemodal {
+            from {
+                margin-top: -500px;
+                
+            }
+
+            to {
+                margin-top: 1px;
+                
+            }
+        }
+
+        
+    </style>
+
+    <script>
+        const modal = document.querySelector(".modal");
+        const cancel = document.querySelector(".cancel");
+        const overall = document.querySelector(".overall");
+
+        modal.addEventListener("click", function () {
+            overall.style.display = "block";
+        });
+
+        cancel.addEventListener("click", function () {
+            overall.style.display = "none";
+        });
+
+        window.addEventListener("click", function (e) {
+            if (e.target === overall) {
+                overall.style.display = "none";
+            }
+        });
+
+    </script>
+</body>
+
+</html>
